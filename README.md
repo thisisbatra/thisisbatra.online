@@ -1,3 +1,7 @@
+# Portfolio contact email setup
+
+See [CONTACT_SETUP.md](CONTACT_SETUP.md) for Vercel environment variables, Gmail configuration, and local development.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

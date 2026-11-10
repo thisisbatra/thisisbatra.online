@@ -1,27 +1,21 @@
 import React from 'react';
+import { NavLink, Outlet } from 'react-router-dom';
 import styles from './Background.module.css';
-import { NavLink, Outlet, useLocation } from 'react-router-dom';
 
-const Background = () => {
-    let location=useLocation();
-    return (
-        <main className={styles.main}>
-            <ul className={styles.list}>
-                <li><NavLink to='/background' 
-                    className={`${styles.red} ${location.pathname.endsWith("background")?styles.active:""}`}>education</NavLink>
-                </li>
-                <li><NavLink to='skills' 
-                    className={`${styles.yellow} ${location.pathname.includes("skills")?styles.active:""}`}>skills</NavLink>
-                </li>
-                <li><NavLink to='achievements'
-                     className={`${styles.green} ${location.pathname.includes("achievements")?styles.active:""}`}>achievements</NavLink>
-                </li>
-            </ul>
-            <section className={styles.outletSection}>
-                <Outlet/>
-            </section>
-        </main>
-    );
-}
-
+const Background = () => (
+  <section className={styles.background}>
+    <header className={styles.heading}>
+      <p className={styles.eyebrow}>Background / My journey</p>
+      <h1>Learning. Building.<br /><em>Moving forward.</em></h1>
+      <p className={styles.intro}>From a foundation in software development to enterprise applications and GenAI. The experience and education behind my work.</p>
+    </header>
+    <div className={styles.layout}>
+      <nav className={styles.navigation} aria-label='Background sections'>
+        <NavLink end to='/background'><span aria-hidden='true'>01</span>Experience</NavLink>
+        <NavLink to='education'><span aria-hidden='true'>02</span>Education</NavLink>
+      </nav>
+      <div className={styles.panel}><Outlet /></div>
+    </div>
+  </section>
+);
 export default Background;

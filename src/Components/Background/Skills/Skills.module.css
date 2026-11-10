@@ -1,0 +1,14 @@
+.skills { min-width: 0; }
+.heading { margin-bottom: 1rem; }
+.heading h2 { margin: 0 0 .65rem; font-size: 1.4rem; letter-spacing: -.04em; }
+.skills .heading p { margin: 0; color: var(--muted); font-family: inherit; font-size: .88rem; line-height: 1.8; letter-spacing: normal; text-transform: none; }
+.categories { display: flex; flex-wrap: wrap; gap: .45rem; margin-bottom: 1rem; }
+.categories button { padding: .5rem .7rem; border: 1px solid var(--line); border-radius: 7px; background: transparent; color: var(--muted); font-size: .75rem; line-height: 1.5; cursor: pointer; }
+.categories button:hover { color: var(--ink); border-color: var(--accent); }
+.categories button[aria-pressed='true'] { background: rgba(152,245,207,.1); border-color: var(--accent); color: var(--accent); }
+.categories button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+.details { min-height: 180px; padding: 1rem; border: 1px solid var(--line); border-radius: 10px; background: rgba(11,16,32,.3); }
+.details h3 { margin: 0 0 .85rem; color: var(--blue); font-size: .95rem; }
+.tags { display: flex; flex-wrap: wrap; gap: .45rem; min-width: 0; margin: 0; padding: 0; list-style: none; }
+.tags li { max-width: 100%; padding: .4rem .65rem; border: 1px solid var(--line); border-radius: 6px; background: var(--surface-raised); color: var(--ink); font-size: .75rem; line-height: 1.5; overflow-wrap: anywhere; }
+@media (max-width: 400px) { .categories { gap: .35rem; } .categories button { padding: .4rem .5rem; font-size: .7rem; } .details { padding: .8rem; min-height: 200px; } .tags li { padding: .35rem .5rem; } }

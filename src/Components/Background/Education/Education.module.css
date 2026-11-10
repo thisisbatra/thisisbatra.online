@@ -1,12 +1,1 @@
-.EduCart{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    height: 100%;
-}
-.container{
-    border: 1px solid black;
-    padding: 0.5rem 1rem;
-    margin: 0.5rem;
-    border-radius: 10px;
-}
+.list { display: grid; gap: 1rem; }.intro { margin: 0 0 .5rem; color: var(--muted); line-height: 1.7; }.list article { padding: 1.2rem; border: 1px solid var(--line); border-radius: 12px; }.list span { color: var(--accent); font-family: 'DM Mono', monospace; font-size: .67rem; }.list h2 { margin: .55rem 0 .3rem; font-size: 1.05rem; letter-spacing: -.03em; }.list article p { margin: 0; color: var(--muted); font-size: .85rem; }

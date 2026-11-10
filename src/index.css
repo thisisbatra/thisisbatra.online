@@ -1,13 +1,9 @@
-*{
-  margin: 0%;
-  padding: 0%;
-  font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-  box-sizing: border-box;
-}
-#root{
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
-  justify-content: space-between;
-  background: #252525;
-}
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap');
+
+:root { --canvas: #0b1020; --surface: #121a2e; --surface-raised: #18233d; --ink: #f5f7ff; --muted: #aab6cf; --line: rgba(214, 225, 255, 0.15); --accent: #98f5cf; --accent-dark: #0c2a24; --blue: #8bb7ff; }
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; min-width: 320px; background: var(--canvas); color: var(--ink); font-family: 'Manrope', Arial, sans-serif; }
+body::before { content: ''; position: fixed; inset: 0; z-index: -1; pointer-events: none; background: radial-gradient(circle at 10% 0%, rgba(82, 122, 255, .2), transparent 30rem), radial-gradient(circle at 90% 25%, rgba(91, 223, 174, .12), transparent 25rem); }
+button, input, textarea { font: inherit; }
+a { color: inherit; }
