@@ -4,7 +4,7 @@ import styles from './About.module.css';
 
 const About = () => (
   <section className={styles.about}>
-    <div className={styles.portraitWrap}><img src={`${process.env.PUBLIC_URL}/assets/photos/meLinkedIn.jpg`} alt='Nitin Batra' /><span className={styles.frame} /></div>
+    <div className={styles.portraitWrap}><img src={`${process.env.PUBLIC_URL}/assets/photos/meLinkedIn.png`} alt='Nitin Batra' /><span className={styles.frame} /></div>
     <div className={styles.content}>
       <p className={styles.kicker}>About me</p>
       <h1>Curious about systems. Driven to <em>build.</em></h1>
