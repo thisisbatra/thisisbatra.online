@@ -1,11 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { HiArrowDown, HiOutlineLocationMarker } from 'react-icons/hi';
+import { HiOutlineLocationMarker } from 'react-icons/hi';
 import { HiArrowUpRight } from 'react-icons/hi2';
 import styles from './Home.module.css';
 
 const Home = () => {
-  const openResume = () => window.open(`${process.env.PUBLIC_URL}/assets/resume/nitinResume.pdf`, '_blank', 'noopener,noreferrer');
   return (
     <section className={styles.home}>
       <div className={styles.hero}>
@@ -14,7 +13,7 @@ const Home = () => {
         <p className={styles.intro}>I’m Nitin Batra, a software engineer focused on thoughtful interfaces, reliable systems, and products people enjoy using.</p>
         <div className={styles.actions}>
           <Link className={styles.primary} to='/project'>See selected work <HiArrowUpRight /></Link>
-          <button className={styles.secondary} onClick={openResume}>Résumé <HiArrowDown /></button>
+          <a className={styles.secondary} href="https://drive.google.com/file/d/1jsod5sst56g7ivr6Y6B00nWzdbPqz5uh/view?usp=drive_link" target="_blank" rel="noopener noreferrer" aria-label="View resume on Google Drive (opens in a new tab)">Résumé <HiArrowUpRight aria-hidden="true" /></a>
         </div>
       </div>
       <aside className={styles.profileCard}>
