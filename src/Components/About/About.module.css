@@ -1,6 +1,6 @@
 .about { display: grid; grid-template-columns: minmax(260px, .75fr) minmax(0, 1.25fr); gap: clamp(2.5rem, 7vw, 6rem); align-items: center; max-width: 980px; margin: 0 auto; }
 .portraitWrap { position: relative; width: min(100%, 335px); justify-self: center; }
-.portraitWrap img { display: block; width: 100%; aspect-ratio: .82; object-fit: cover; border-radius: 12px; filter: grayscale(18%); }
+.portraitWrap img { display: block; width: 100%; height: auto; border-radius: 12px; filter: grayscale(18%); }
 .frame { position: absolute; inset: 1rem -1rem -1rem 1rem; z-index: -1; border: 1px solid var(--accent); border-radius: 12px; }
 .kicker { margin: 0 0 .8rem; color: var(--accent); font-family: 'DM Mono', monospace; font-size: .7rem; letter-spacing: .08em; text-transform: uppercase; }
 .content h1 { margin: 0; font-size: clamp(2.6rem, 5vw, 4.5rem); line-height: 1; letter-spacing: -.07em; }
