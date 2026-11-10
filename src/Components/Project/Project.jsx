@@ -1,35 +1,58 @@
 import React from 'react';
-import { HiCode } from 'react-icons/hi';
+import { HiOutlineDocumentSearch, HiOutlineCube, HiOutlineMusicNote } from 'react-icons/hi';
 import { HiArrowUpRight } from 'react-icons/hi2';
+import projects from './projectData';
 import styles from './Project.module.css';
 
-// Replace these placeholders with your real project title, role, results, stack and links.
-const projects = [
-  { number: '01', title: 'Project one', type: 'Full-stack web app', description: 'A concise one-line explanation of the user problem this project solves. Keep this focused on the value, not just the tech.', stack: ['React', 'Node.js', 'MongoDB'], tone: styles.lilac },
-  { number: '02', title: 'Project two', type: 'Developer tool', description: 'Explain the workflow you improved and the part you personally owned. Add a measurable outcome when you have one.', stack: ['Java', 'Spring Boot', 'SQL'], tone: styles.mint },
-  { number: '03', title: 'Project three', type: 'Open-source contribution', description: 'Show how you investigated a problem, made the change, and what it unlocked for users or maintainers.', stack: ['JavaScript', 'Git', 'REST API'], tone: styles.blue },
-];
+const visuals = {
+  docanchor: { Icon: HiOutlineDocumentSearch, tone: styles.lilac },
+  erp: { Icon: HiOutlineCube, tone: styles.mint },
+  chorus: { Icon: HiOutlineMusicNote, tone: styles.blue },
+};
 
 const Project = () => (
   <section className={styles.projects}>
     <header className={styles.heading}>
-      <p className={styles.kicker}>Selected work</p>
-      <h1>A few things I’ve <em>built.</em></h1>
-      <p>Replace the placeholders below with your strongest work. A great case study explains the problem, your contribution, and the outcome.</p>
+      <p className={styles.kicker}>Projects / Building in public</p>
+      <h1>Things I’m <em>building.</em></h1>
+      <p>Ideas taking shape, one step at a time. A look at what I’m working on, what comes next, and the problems I want to solve.</p>
     </header>
     <div className={styles.grid}>
-      {projects.map((project) => (
-        <article className={styles.card} key={project.number}>
-          <div className={`${styles.visual} ${project.tone}`}><span>{project.number}</span><HiCode /></div>
-          <div className={styles.cardBody}>
-            <p className={styles.type}>{project.type}</p>
-            <h2>{project.title}</h2>
-            <p className={styles.description}>{project.description}</p>
-            <ul>{project.stack.map((item) => <li key={item}>{item}</li>)}</ul>
-            <div className={styles.cardFooter}><span>Links to add</span><span className={styles.icons}><HiArrowUpRight /> <HiCode /></span></div>
-          </div>
-        </article>
-      ))}
+      {projects.map(project => {
+        const { Icon, tone } = visuals[project.id];
+        return (
+          <article className={styles.card} key={project.id} aria-labelledby={`${project.id}-title`}>
+            <div className={`${styles.visual} ${tone}`} aria-hidden='true'>
+              <span>{project.number}</span><Icon />
+            </div>
+            <div className={styles.cardBody}>
+              <div className={styles.meta}>
+                <p className={styles.type}>{project.type}</p>
+                <span className={`${styles.status} ${project.status === 'Planned' ? styles.planned : styles.inProgress}`}>{project.status}</span>
+              </div>
+              <h2 id={`${project.id}-title`}>{project.title}</h2>
+              <p className={styles.tagline}>{project.tagline}</p>
+              <p className={styles.description}>{project.description}</p>
+              <h3 className={styles.roadmapHeading}>Building toward</h3>
+              <ul className={styles.roadmap}>
+                {project.roadmap.map(feature => <li key={feature}>{feature}</li>)}
+              </ul>
+              <ul className={styles.stack} aria-label={`${project.title} technologies`}>
+                {project.stack.map(item => <li key={item}>{item}</li>)}
+              </ul>
+              <div className={styles.cardFooter}>
+                <p>{project.note}</p>
+                {(project.githubUrl || project.liveUrl) && (
+                  <div className={styles.links}>
+                    {project.githubUrl && <a href={project.githubUrl} target='_blank' rel='noopener noreferrer' aria-label={`${project.title} on GitHub`}>GitHub <HiArrowUpRight aria-hidden='true' /></a>}
+                    {project.liveUrl && <a href={project.liveUrl} target='_blank' rel='noopener noreferrer' aria-label={`${project.title} live demo`}>Live demo <HiArrowUpRight aria-hidden='true' /></a>}
+                  </div>
+                )}
+              </div>
+            </div>
+          </article>
+        );
+      })}
     </div>
   </section>
 );
