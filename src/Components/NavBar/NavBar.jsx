@@ -1,40 +1,38 @@
-import React from 'react';
-import { NavLink, useNavigate,useLocation } from 'react-router-dom';
-import { FaArrowRight } from "react-icons/fa6";
+import React, { useState } from 'react';
+import { NavLink, Link } from 'react-router-dom';
+import { HiMenuAlt3, HiX } from 'react-icons/hi';
+import { HiArrowUpRight } from 'react-icons/hi2';
 import styles from './navBeauty.module.css';
+
+const links = [
+  { label: 'Home', to: '/' },
+  { label: 'About', to: '/about' },
+  { label: 'Background', to: '/background' },
+  { label: 'Projects', to: '/project' },
+];
+
 const NavBar = () => {
-    let navigate=useNavigate();
-    let location=useLocation();
-    let navigateForContactUs=()=>{navigate('/contact');}
-    let toggleBtn=()=>{
-        let x=document.getElementById("brightnessIcon");
-        let y=document.getElementById("ulList");
-        console.log(x.className+" "+y.className);
-    }
-    return (
-        <nav className={styles.nav}>
-            <span className={styles.thumbNail}>
-                <img src="../assets/meThumb.png" alt="thumbnail"/>
-                <h1>thisisbatra</h1>
-            </span>
-            <ul className={`${styles.list}`} id="ulList">
-                <li><NavLink to='/' className={location.pathname==='/'?styles.active:""}>home</NavLink></li>
-                <li><NavLink to='/about' className={location.pathname==='/about'?styles.active:""}>about</NavLink></li>
-                <li><NavLink to='/background'
-                 className={location.pathname.includes("/background")?styles.active:""}>
-                    background</NavLink>
-                </li>
-                <li><NavLink to='/project' className={location.pathname==='/project'?styles.active:""}>project</NavLink></li>
-            </ul>
-            <span className={location.pathname==='/contact'?styles.connectBtnActive:styles.connectbtn} onClick={navigateForContactUs}>
-                <p>Let's catch up!</p>
-                <FaArrowRight/>
-            </span>
-            <span className={styles.menuBar} onClick={toggleBtn}>
-                <i className="bi bi-three-dots-vertical"></i>
-            </span>
-        </nav>
-    );
-}
+  const [isOpen, setIsOpen] = useState(false);
+  const closeMenu = () => setIsOpen(false);
+  return (
+    <header className={styles.header}>
+      <nav className={styles.nav} aria-label='Main navigation'>
+        <Link to='/' className={styles.brand} onClick={closeMenu}>
+          <span className={styles.brandMark}>NB</span>
+          <span>thisisbatra<span className={styles.dot}>.</span></span>
+        </Link>
+        <button className={styles.menuButton} onClick={() => setIsOpen(!isOpen)} aria-label='Toggle navigation' aria-expanded={isOpen}>
+          {isOpen ? <HiX /> : <HiMenuAlt3 />}
+        </button>
+        <div className={`${styles.linksWrap} ${isOpen ? styles.open : ''}`}>
+          <ul className={styles.links}>
+            {links.map(({ label, to }) => <li key={to}><NavLink end={to === '/'} to={to} onClick={closeMenu}>{label}</NavLink></li>)}
+          </ul>
+          <Link to='/contact' onClick={closeMenu} className={styles.contactLink}>Let’s talk <HiArrowUpRight /></Link>
+        </div>
+      </nav>
+    </header>
+  );
+};
 
 export default NavBar;

@@ -1,74 +1,10 @@
-.main{
-    width: 60%;
-    height: fit-content;
-    display: flex;
-    gap: 2rem;
-    background: white;
-    margin: 0 auto;
-    border: none;
-    border-radius: 30px;
-    padding: 1rem;
-}
-.desc{
-    width: 50%;
-    font-size: 1.5rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 1rem;
-    text-align: center;
-}
-.desc p{
-    font-size: 1.25rem;
-    color: gray;
-}
+.contact { display: grid; grid-template-columns: .9fr 1.1fr; gap: clamp(2.5rem, 8vw, 7rem); max-width: 1000px; margin: 0 auto; align-items: start; }
+.kicker { margin: 0 0 .8rem; color: var(--accent); font-family: 'DM Mono', monospace; font-size: .7rem; letter-spacing: .08em; text-transform: uppercase; }.copy h1 { margin: 0; font-size: clamp(2.7rem, 5.3vw, 4.6rem); line-height: 1; letter-spacing: -.07em; }.copy h1 em { color: var(--accent); font-family: Georgia, serif; font-weight: 400; }.copy > p:not(.kicker) { margin: 1.4rem 0; color: var(--muted); line-height: 1.85; }.note { color: var(--blue); font-family: 'DM Mono', monospace; font-size: .7rem; line-height: 1.6; }
+.form { display: grid; gap: 1rem; padding: 1.4rem; border: 1px solid var(--line); border-radius: 16px; background: var(--surface); }.form label { display: grid; gap: .45rem; color: var(--muted); font-size: .78rem; font-weight: 700; }.form input, .form textarea { width: 100%; border: 1px solid var(--line); border-radius: 8px; outline: 0; background: rgba(255,255,255,.03); color: var(--ink); padding: .8rem .9rem; }.form input:focus, .form textarea:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(152,245,207,.08); }.form textarea { resize: vertical; }.form button { display: inline-flex; align-items: center; justify-content: center; gap: .5rem; min-height: 46px; border: 1px solid var(--accent); border-radius: 8px; background: var(--accent); color: #0d1c1c; font-size: .86rem; font-weight: 800; cursor: pointer; }.status { min-height: 1.2em; margin: 0; color: var(--muted); font-size: .78rem; }
+@media (max-width: 700px) { .contact { grid-template-columns: 1fr; } }
 
-.form{
-    width: 50%;
-    background: white;
-    display: flex;
-    flex-direction: column;
-    margin: 0 auto;
-    gap: 1rem;
-    font-size: 1.25rem;
-    border-radius: 10px;
-}
-.Input{
-    outline: none;
-    padding: 0.5rem;
-    font-size: 1.2rem;
-    color: black;
-    border: 1px solid #34A853;
-    border-radius: 7px;
-}
-.subjectInput{
-    margin: 0 1rem;
-}
-.TextArea{
-    height: 10rem;
-    resize: none;
-    outline: none;
-    padding: 0.5rem;
-    font-size: 1.2rem;
-    color: black;
-    border: 1px solid #34A853;
-    border-radius: 7px;
-}
-.submitBtn{
-    padding: 0.5rem;
-    cursor: pointer;
-    background-color: #34A853;
-    color: white;
-    border: 1px solid #34A853;
-    border-radius: 50px;
-    text-align: center;
-    font-size: 1.2rem;
-    transition: 1s;
-    box-shadow: 2px 2px 5px 1px gray;
-}
-.submitBtn:hover{
-    color: #34A853;
-    background-color: white;
-    box-shadow: none;
-    transition: 1s;
-}
+.honeypot { position: absolute; width: 1px; height: 1px; padding: 0; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+.emailNote { margin: 0; color: var(--muted); font-size: .72rem; line-height: 1.7; }
+.emailNote a { color: var(--accent); overflow-wrap: anywhere; }
+.form button:disabled { opacity: .65; cursor: wait; }
+.form button:focus-visible, .emailNote a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }

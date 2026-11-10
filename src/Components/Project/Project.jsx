@@ -1,101 +1,37 @@
-import React, { useRef,useState } from 'react';
-import style from './Project.module.css';
-import { FaEye, FaCode } from "react-icons/fa";
-import { SiReadme } from "react-icons/si";
-import { IoIosArrowDropleftCircle, IoIosArrowDroprightCircle  } from "react-icons/io";
-import { NavLink } from 'react-router-dom';
+import React from 'react';
+import { HiCode } from 'react-icons/hi';
+import { HiArrowUpRight } from 'react-icons/hi2';
+import styles from './Project.module.css';
 
-const Project = () => {
-    const forScrollRef=useRef(null);
-    const [canScrollLeft, setCanScrollLeft] = useState(false);
-    const [canScrollRight, setCanScrollRight] = useState(true);
+// Replace these placeholders with your real project title, role, results, stack and links.
+const projects = [
+  { number: '01', title: 'Project one', type: 'Full-stack web app', description: 'A concise one-line explanation of the user problem this project solves. Keep this focused on the value, not just the tech.', stack: ['React', 'Node.js', 'MongoDB'], tone: styles.lilac },
+  { number: '02', title: 'Project two', type: 'Developer tool', description: 'Explain the workflow you improved and the part you personally owned. Add a measurable outcome when you have one.', stack: ['Java', 'Spring Boot', 'SQL'], tone: styles.mint },
+  { number: '03', title: 'Project three', type: 'Open-source contribution', description: 'Show how you investigated a problem, made the change, and what it unlocked for users or maintainers.', stack: ['JavaScript', 'Git', 'REST API'], tone: styles.blue },
+];
 
-    const handleScroll=()=>{
-        // console.log(forScrollRef);
-        let scroller=forScrollRef.current;
-        if(!scroller) return;
+const Project = () => (
+  <section className={styles.projects}>
+    <header className={styles.heading}>
+      <p className={styles.kicker}>Selected work</p>
+      <h1>A few things I’ve <em>built.</em></h1>
+      <p>Replace the placeholders below with your strongest work. A great case study explains the problem, your contribution, and the outcome.</p>
+    </header>
+    <div className={styles.grid}>
+      {projects.map((project) => (
+        <article className={styles.card} key={project.number}>
+          <div className={`${styles.visual} ${project.tone}`}><span>{project.number}</span><HiCode /></div>
+          <div className={styles.cardBody}>
+            <p className={styles.type}>{project.type}</p>
+            <h2>{project.title}</h2>
+            <p className={styles.description}>{project.description}</p>
+            <ul>{project.stack.map((item) => <li key={item}>{item}</li>)}</ul>
+            <div className={styles.cardFooter}><span>Links to add</span><span className={styles.icons}><HiArrowUpRight /> <HiCode /></span></div>
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+);
 
-        const { scrollLeft, scrollWidth, clientWidth } = scroller;
-        setCanScrollLeft(scrollLeft > 0);
-        setCanScrollRight(scrollLeft + clientWidth < scrollWidth);
-    }
-
-    const scrollLeft = () => {
-        forScrollRef.current.scrollBy({ left: -200, behavior: "smooth" });
-      };
-    
-      const scrollRight = () => {
-        forScrollRef.current.scrollBy({ left: 200, behavior: "smooth" });
-      };
-
-    const projectData=[{
-        id: 1,
-        title:"title",
-        preview:true,
-        techUsed:["name1","name2","name3"],
-        source:true,
-        blog:true
-    },{
-        id: 2,
-        title:"title",
-        preview:true,
-        techUsed:["name1","name2"],
-        source:true,
-        blog:true
-    },{
-        id: 3,
-        title:"title",
-        preview:true,
-        techUsed:["name1"],
-        source:true,
-        blog:true
-    },{
-        id: 4,
-        title:"title",
-        preview:true,
-        techUsed:["name1","name2","name3"],
-        source:true,
-        blog:true
-    }]
-    return (
-        <section className={style.section}>
-            <div className={style.scrollBar}>
-                <IoIosArrowDropleftCircle className={canScrollLeft===true?style.arrow:style.arrowDisabled} onClick={scrollLeft}/>
-                <IoIosArrowDroprightCircle className={canScrollRight===true?style.arrow:style.arrowDisabled} onClick={scrollRight}/>
-            </div>
-            <div className={style.cartHolder} ref={forScrollRef} onScroll={handleScroll}>
-                {
-                projectData.map((i)=><ProjectCart key={i.id} data={i}/>)
-                }
-            </div>
-        </section>
-    );
-}
-const ProjectCart=(props)=>{
-    return(
-        <div className={style.ProjectCart}>
-            <div className={style.ProjectPrev}>
-                <span>
-                    <FaEye/>
-                    view live preview
-                </span>
-            </div>
-            <div className={style.ProjectDesc}>
-                <h1>{props.data.title}</h1>
-                <span className={style.forList}>
-                    <h4>tech used</h4>
-                    <ul>
-                        {props.data.techUsed.map((i,index)=>
-                            <li key={index}>{i}</li>
-                            )}
-                    </ul>
-                </span>
-                <span className={style.forBtn}>
-                    <NavLink to="#"><FaCode/>source</NavLink>
-                    <NavLink to="#"><SiReadme/>blog</NavLink>
-                </span>
-            </div>
-        </div>
-    )
-}
 export default Project;

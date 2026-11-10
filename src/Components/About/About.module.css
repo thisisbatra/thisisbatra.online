@@ -1,63 +1,11 @@
-.main{
-    display: flex;
-    gap: 2rem;
-    height: fit-content;
-    width: 50%;
-    background-color: white;
-    margin: 0 auto;
-    border-radius: 20px;
-    padding: 1.5rem;
-    align-items: center;
-}
-.ImgBorder{
-    height: 15rem;
-    width: 12rem;
-    border: 2px solid black;
-    border-radius: 20px;
-    transform: rotate(-8deg);
-    background-color: transparent;
-    position: absolute;
-    z-index: 2;
-    top: 15.3rem;
-    left: 28rem;
-}
-.ImgBorder::after,.ImgBorder::before{
-    content: "";
-    position: absolute;
-    width: 0;
-    height: 0;
-    border-style: solid;
-    z-index: 1;
-}
-.ImgBorder::before {
-    top: -20%;
-    left: -30%;
-    border-width: 0 130px 150px 130px; /* Adjust triangle size */
-    border-color: transparent transparent #EA4335 transparent; /* Triangle color */
-    transform: rotate(-20deg);
-  }
-  
-  .ImgBorder::after {
-    top: 90%;
-    right: -30%;
-    border-width: 0 80px 50px 80px; /* Adjust triangle size */
-    border-color: transparent transparent #34A853 transparent; /* Triangle color */
-    transform: rotate(140deg); /* Rotate second triangle */
-  }
-.ImgDiv{
-    width: 40%;
-    height: 15rem;
-}
-.Img{
-    width: 100%; 
-    height: 100%;   
-    object-fit: contain;
-    position: relative;
-    z-index: 3;
-}
-.contentSec{
-    width: 60%;
-    font-size: 1.25rem;
-    font-style: italic;
-    color: #252525;
-}
+.about { display: grid; grid-template-columns: minmax(260px, .75fr) minmax(0, 1.25fr); gap: clamp(2.5rem, 7vw, 6rem); align-items: center; max-width: 980px; margin: 0 auto; }
+.portraitWrap { position: relative; width: min(100%, 335px); justify-self: center; }
+.portraitWrap img { display: block; width: 100%; aspect-ratio: .82; object-fit: cover; border-radius: 12px; filter: grayscale(18%); }
+.frame { position: absolute; inset: 1rem -1rem -1rem 1rem; z-index: -1; border: 1px solid var(--accent); border-radius: 12px; }
+.kicker { margin: 0 0 .8rem; color: var(--accent); font-family: 'DM Mono', monospace; font-size: .7rem; letter-spacing: .08em; text-transform: uppercase; }
+.content h1 { margin: 0; font-size: clamp(2.6rem, 5vw, 4.5rem); line-height: 1; letter-spacing: -.07em; }
+.content h1 em { color: var(--blue); font-family: Georgia, serif; font-weight: 400; }
+.content > p:not(.kicker) { margin: 1.3rem 0 0; color: var(--muted); font-size: 1rem; line-height: 1.85; }
+.link { display: inline-flex; align-items: center; gap: .55rem; margin-top: 2rem; color: var(--ink); font-size: .9rem; font-weight: 800; text-decoration: none; }
+.link span { color: var(--accent); font-size: 1.3rem; }
+@media (max-width: 700px) { .about { grid-template-columns: 1fr; } .portraitWrap { justify-self: start; width: min(78%, 335px); } }

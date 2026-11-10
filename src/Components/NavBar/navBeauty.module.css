@@ -1,100 +1,14 @@
-.nav{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 1.25rem;
-    padding: 0.5rem 2rem;
-    color: white;
-    width: 100%;
-}
-.connectbtn, .connectBtnActive{
-    display: flex;
-    gap: 0.5rem;
-    border-radius: 50px;
-    cursor: pointer;
-    font-size: 1.25rem;
-    align-items: center;
-    padding: 0.75rem 0.5rem;
-}
-.connectbtn{
-    background: white;
-    color: #252525;
-    border: 2px solid #252525;
-}
-.connectbtn:hover{
-    background: #252525;
-    border: 2px solid white;
-    color: white;
-    transition: 1s;
-}
-.connectBtnActive{
-    background: #4285F4;
-    border: 2px solid #4285F4;
-}
-.connectBtnActive:hover{
-    background: #252525;
-    border: 2px solid #4285F4;
-    color: #4285F4;
-    transition: 1s;
-}
-.list{
-    display: flex;
-    list-style-type: none;
-    gap: 1rem;
-    padding: 1rem;
-    border-radius: 50rem;
-    font-size: 1.25rem;
-}
-.list li a{
-    color: white;
-    text-decoration: none;
-    text-transform: capitalize;
-    cursor: pointer;
-    padding: 0.5rem 1rem;
-    border: 2px solid transparent;
-    border-radius: 25px;
-}
-.list li a:hover{
-    padding: 0.5rem 1rem;
-    border: 2px solid #4285F4;
-    border-radius: 25px;
-    /* background: #34A853; */
-    color: white;
-    transition: 1.5s;
-}
-.active{
-    background-color: #4285F4;
-}
-.thumbNail{
-    display: flex;
-    gap: 1rem;
-}
-.thumbNail h1{
-    font-weight: lighter;
-}
-.thumbNail img{
-    width: 100%;
-    height: 2.5rem;
-}
-.menuBar{
-    display: none;
-}
-@media only screen and (max-width: 600px){
-    .nav{
-        flex-direction: column-reverse;
-        padding: 0.5rem 1rem;
-    }
-    .thumbNail{
-        align-self: flex-start;
-    }
-    .brightnessIcon,.list{
-        display: none;
-    }
-    .menuBar{
-        display: flex;
-        align-self: flex-end;
-        position: absolute;
-        translate: 0 -0.5rem;
-    }
-}
+.header { position: sticky; top: 0; z-index: 10; border-bottom: 1px solid var(--line); background: rgba(11, 16, 32, .94); backdrop-filter: blur(16px); }
+.nav { width: min(1240px, calc(100% - 3rem)); min-height: 78px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 2rem; }
+.brand { display: inline-flex; align-items: center; gap: .7rem; font-size: 1rem; font-weight: 800; letter-spacing: -.04em; text-decoration: none; }
+.brandMark { display: grid; place-items: center; width: 2.15rem; aspect-ratio: 1; border: 1px solid var(--accent); border-radius: 50%; color: var(--accent); font-family: 'DM Mono', monospace; font-size: .68rem; letter-spacing: 0; }
+.dot { color: var(--accent); }
+.linksWrap, .links { display: flex; align-items: center; }
+.linksWrap { gap: 2.25rem; }
+.links { gap: 1.55rem; margin: 0; padding: 0; list-style: none; }
+.links a { color: var(--muted); font-size: .86rem; font-weight: 700; text-decoration: none; transition: color .2s ease; }
+.links a:hover, .links a[aria-current='page'] { color: var(--ink); }
+.contactLink { display: inline-flex; align-items: center; gap: .35rem; padding: .7rem 1rem; border: 1px solid var(--line); border-radius: 999px; color: var(--ink); font-size: .84rem; font-weight: 700; text-decoration: none; transition: background .2s, border-color .2s; }
+.contactLink:hover { border-color: var(--accent); background: rgba(152,245,207,.09); }
+.menuButton { display: none; border: 0; background: transparent; color: var(--ink); font-size: 1.5rem; cursor: pointer; }
+@media (max-width: 700px) { .nav { width: min(100% - 2rem, 1240px); min-height: 66px; } .menuButton { display: block; z-index: 2; } .linksWrap { display: none; } .linksWrap.open { position: absolute; z-index: 1; top: 66px; left: 0; right: 0; display: flex; flex-direction: column; align-items: stretch; gap: 1.25rem; padding: 1.5rem 1rem 2rem; border-bottom: 1px solid var(--line); background: var(--canvas); } .links { flex-direction: column; align-items: stretch; gap: .25rem; } .links a { display: block; padding: .8rem 0; } .contactLink { justify-content: center; } }
