@@ -16,11 +16,21 @@ const Home = () => {
           <a className={styles.secondary} href="https://drive.google.com/file/d/1jsod5sst56g7ivr6Y6B00nWzdbPqz5uh/view?usp=drive_link" target="_blank" rel="noopener noreferrer" aria-label="View resume on Google Drive (opens in a new tab)">Résumé <HiArrowUpRight aria-hidden="true" /></a>
         </div>
       </div>
-      <aside className={styles.profileCard}>
-        <div className={styles.imageFrame}><img src={`${process.env.PUBLIC_URL}/assets/photos/meForBanner.jpg`} alt='Nitin Batra' /></div>
-        <p className={styles.cardLabel}>Currently exploring</p>
-        <p className={styles.cardTitle}>Systems design, frontend craft &amp; open source.</p>
-        <div className={styles.cardFooter}><HiOutlineLocationMarker aria-hidden="true" /><span>Based in Delhi, India</span></div>
+      <aside className={styles.profileCard} aria-label='About Nitin Batra'>
+        <div className={styles.identityVisual} aria-hidden='true'>
+          <div className={styles.orbit} />
+          <span className={styles.monogram}>NB<span>.</span></span>
+          <span className={styles.visualCaption}>Curiosity into creation.</span>
+        </div>
+        <div className={styles.identityBody}>
+          <h2 className={styles.profileName}>Nitin Batra</h2>
+          <p className={styles.profileRole}>Software architect in the making</p>
+          <p className={styles.cardLabel}>Currently exploring</p>
+          <ul className={styles.interests} aria-label='Current interests'>
+            <li>System Design</li><li>AI</li><li>Product Development</li>
+          </ul>
+          <div className={styles.cardFooter}><HiOutlineLocationMarker aria-hidden='true' /><span>Delhi, India</span></div>
+        </div>
       </aside>
       <div className={styles.stats}>
         <div><span className={styles.statNumber}>01</span><p>Thoughtful<br />product thinking</p></div>
